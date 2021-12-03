@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="mt-5">
+    <h2>Listado de Estudiantes</h2>
+    <hr />
+    <div class="form-row d-flex justify-content-end">
+      <button routerLink="/estudiante-crear" class="btn btn-primary">
+        <i class="fa fa-plus"> Agregar estudiante</i>
+      </button>
+    </div>
+    <table class="table mt-3">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellido Paterno</th>
+          <th scope="col">Apellido Materno</th>
+          <th scope="col">Documento</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let estudiante of estudiantes; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ estudiante.nombres }}</td>
+          <td>{{ estudiante.apellidoPaterno }}</td>
+          <td>{{ estudiante.apellidoMaternos }}</td>
+          <td>{{ estudiante.numeroDocumento }}</td>
+          <td class="col-2 text-center">
+            <button
+              (click)="getEstudianteById(estudiante.id)"
+              class="btn btn-primary btn-sm ms-1"
+            >
+              Detalle
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

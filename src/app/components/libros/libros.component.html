@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="mt-5">
+    <h2>Listado de Libros</h2>
+    <hr />
+    <div class="form-row d-flex justify-content-end">
+      <!-- <button routerLink="/libro-crear" class="btn btn-primary">
+        <i class="fa fa-plus"> Agregar libro</i>
+      </button> -->
+    </div>
+    <table class="table mt-3">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Titulo</th>
+          <th scope="col">Categoría</th>
+          <th scope="col">Puntuacion</th>
+          <th scope="col">Stock</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let libro of libros; let i = index">
+          <th scope="row">{{i + 1}}</th>
+          <td>{{libro.title}}</td>
+          <td>{{libro.categorias}}</td>
+          <td>
+            <div class="rating-css">
+              <div class="star-icon">
+                <label
+                  *ngIf="libro.puntuacion > 0"
+                  class="fa fa-star"
+                ></label>
+                <label
+                  *ngIf="libro.puntuacion > 1"
+                  class="fa fa-star"
+                ></label>
+                <label
+                  *ngIf="libro.puntuacion > 2"
+                  class="fa fa-star"
+                ></label>
+                <label
+                  *ngIf="libro.puntuacion > 3"
+                  class="fa fa-star"
+                ></label>
+                <label
+                  *ngIf="libro.puntuacion > 4"
+                  class="fa fa-star"
+                ></label>
+              </div>
+            </div>
+          </td>
+          <td>{{libro.stockDisponible}}</td>
+          <td class="col-2 text-center">
+            <button
+              routerLink="/libro/{{libro.id_Libro}}"
+              class="btn btn-primary btn-sm ms-1"
+            >
+              Detalle
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

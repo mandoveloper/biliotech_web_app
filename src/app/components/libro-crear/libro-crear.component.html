@@ -1,0 +1,138 @@
+<div class="container">
+  <div class="mt-5">
+    <div class="d-flex justify-content-between align-items-center">
+      <h2>Nuevo libro</h2>
+      <button
+        routerLink="/lista-libro"
+        class="btn btn-danger btn-sm"
+        style="height: 32px; width: 32px"
+      >
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
+    <hr />
+
+    <form action="">
+      <div class="row">
+        <div class="col-7">
+          <div class="form-group">
+            <label>Nombre de libro</label>
+            <input type="text" class="form-control" placeholder="" />
+            <div style="height: 24px">
+              <small *ngIf="false" class="text-danger"
+                >* Campo obligatorio</small
+              >
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-5">
+              <label>Categoría</label>
+              <select id="inputState" class="form-control">
+                <option selected>Seleccionar categoría...</option>
+                <option>...</option>
+              </select>
+              <div style="height: 24px">
+                <small *ngIf="false" class="text-danger"
+                  >* Campo obligatorio</small
+                >
+              </div>
+            </div>
+
+            <div class="form-group col">
+              <label>Páginas</label>
+              <input type="number" class="form-control" />
+            </div>
+
+            <div class="form-group col">
+              <label>Stock</label>
+              <input type="number" class="form-control" />
+            </div>
+
+            <div class="form-group col-3">
+              <label>Cod Barras</label>
+              <input type="text" class="form-control" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="">Autor</label>
+            <input type="text" class="form-control" />
+            <div style="height: 24px">
+              <small *ngIf="false" class="text-danger"
+                >* Campo obligatorio</small
+              >
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-5">
+              <label>País</label>
+              <select id="inputState" class="form-control">
+                <option selected>Seleccionar país...</option>
+                <option>...</option>
+              </select>
+              <div style="height: 24px">
+                <small *ngIf="false" class="text-danger"
+                  >* Campo obligatorio</small
+                >
+              </div>
+            </div>
+
+            <div class="form-group col">
+              <label>Campo libre</label>
+              <input type="text" class="form-control" />
+              <div style="height: 24px">
+                <small *ngIf="false" class="text-danger"
+                  >* Campo obligatorio</small
+                >
+              </div>
+            </div>
+
+            <div class="form-group col">
+              <label>Valor S/.</label>
+              <input type="text" class="form-control" />
+              <div style="height: 24px">
+                <small *ngIf="false" class="text-danger"
+                  >* Campo obligatorio</small
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-5">
+          <div class="row">
+            <div class="col d-flex justify-content-center">
+              <div class="container__image-portada">
+                <img src="" alt="" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col text-center mt-3">
+              <button class="btn btn-primary">Cargar portada</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="">Reseña</label>
+        <textarea
+          type="text"
+          rows="3"
+          style="resize: none"
+          au
+          class="form-control"
+        >
+        </textarea>
+      </div>
+      <div class="text-center mt-3 mb-4">
+        <button type="submit" class="btn btn-primary w-25">
+          <i class="fa fa-save"></i> Guardar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
