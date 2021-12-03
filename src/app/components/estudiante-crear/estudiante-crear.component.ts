@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EstudianteDetalle } from '../../models/estudiante.models';
 import { EstudianteService } from '../../services/estudiante.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-estudiante-crear',
@@ -15,7 +16,8 @@ export class EstudianteCrearComponent implements OnInit {
 
   constructor(
     private estudiantesService: EstudianteService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -46,12 +48,13 @@ export class EstudianteCrearComponent implements OnInit {
   }
 
   agregarEstudiante() {
-    // console.log(this.forma.value);
 
     this.estudiantesService
       .crearEstudiante(this.forma.value)
       .subscribe((resp) => {
         console.log(resp);
+        
+        this.router.navigateByUrl('/estudiantes');
       });
   }
 }
