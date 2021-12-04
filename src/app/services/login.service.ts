@@ -22,7 +22,7 @@ export class LoginService {
 
   loginUser(email: string, password: string) {
 
-    return this.http.get(`/api/Usuarios/Login?email=${email}&password=${password}`);
+    return this.http.get(`/api/Usuarios/LoginRepresentante?email=${email}&password=${password}`);
 
     
 }

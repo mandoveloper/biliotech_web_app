@@ -18,9 +18,11 @@
           <div class="card-body" style="min-height: 500px; max-height: 600px">
             <div class="row mt-2 mb-2">
               <div class="col-12 d-flex justify-content-center">
-                <div class="container__image-portada">
+                <div class="container__image-portada-m" *ngIf="estudianteDetalle.genero=='Masculino'">
+                  
                   <!-- <img src="" alt="" /> -->
                 </div>
+                <div class="container__image-portada-f" *ngIf="estudianteDetalle.genero=='Femenino'"></div>
               </div>
               <div class="col-12 mt-4">
                 <h6>

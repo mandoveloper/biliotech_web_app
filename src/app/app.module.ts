@@ -17,6 +17,8 @@ import { LibrosComponent } from './components/libros/libros.component';
 import { LibroComponent } from './components/libro/libro.component';
 import { LibroCrearComponent } from './components/libro-crear/libro-crear.component';
 import { LibroEditarComponent } from './components/libro-editar/libro-editar.component';
+import { MyChartComponent } from './components/my-chart/my-chart.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { LibroEditarComponent } from './components/libro-editar/libro-editar.com
     LibrosComponent,
     LibroComponent,
     LibroCrearComponent,
-    LibroEditarComponent
+    LibroEditarComponent,
+    MyChartComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

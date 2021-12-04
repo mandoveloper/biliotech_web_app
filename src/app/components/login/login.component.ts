@@ -13,21 +13,21 @@ export class LoginComponent implements OnInit {
   
   
   forma: FormGroup;
-  
+  mensaje:string;
   constructor( private loginService: LoginService, private fb: FormBuilder, private router: Router) { 
-
+    this.mensaje='';
 
   }
   
   
   ngOnInit(): void {
-
+    localStorage.clear();
     this.crearFormulario();
 
   }
   
   login() {
-
+    
     if (!this.forma.invalid) {
       
       const {email, password} = this.forma.value;
@@ -39,6 +39,9 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('user_email', email);
           this.loginService.user.next(email);
           this.router.navigateByUrl('/estudiantes');
+
+        }else{
+          this.mensaje='Acceso denegado';
 
         }
         

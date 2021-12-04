@@ -9,6 +9,7 @@ import { LibrosComponent } from './components/libros/libros.component';
 import { LibroComponent } from './components/libro/libro.component';
 import { LibroCrearComponent } from './components/libro-crear/libro-crear.component';
 import { LibroEditarComponent } from './components/libro-editar/libro-editar.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'libro/:id', component: LibroComponent},
   {path: 'libro-crear', component: LibroCrearComponent},
   {path: 'libro-editar', component: LibroEditarComponent},
+  {path: 'dashboard', component: DashboardComponent},
   {path: '**', redirectTo: 'login'}
 ];
 
