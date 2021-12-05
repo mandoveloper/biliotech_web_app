@@ -11,7 +11,7 @@ import { Libro } from '../../models/libro.models';
 export class LibrosComponent implements OnInit {
 
   libros: Libro[] = [];
-  // libro: Libro;
+  isLoading: boolean = true;
 
   constructor( private libroService: LibroService, private router: Router) { }
 
@@ -23,6 +23,9 @@ export class LibrosComponent implements OnInit {
     this.libroService.listarLibros().subscribe( (resp) => {
       console.log(resp);
       this.libros = resp;
+      if (this.libros) {
+        this.isLoading = false;
+      }
     });
   }
 

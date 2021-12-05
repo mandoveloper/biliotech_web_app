@@ -1,6 +1,75 @@
 <div class="container">
   <div class="mt-5">
     <div class="d-flex justify-content-between align-items-center">
+      <h2>Agregar a  biblioteca</h2>
+      <button
+        routerLink="/lista-libro"
+        class="btn btn-danger btn-sm"
+        style="height: 32px; width: 32px"
+      >
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
+    <hr />
+    <table class="table mt-3">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Titulo</th>
+          <th scope="col">Categoría</th>
+          <th scope="col">Puntuacion</th>
+          <th scope="col">Stock</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let libro of [1,1,1,1,1,1]; let i = index">
+          <th scope="row">{{i + 1}}</th>
+          <!-- <td>{{libro.title}}</td>
+          <td>{{libro.categorias}}</td> -->
+          <td>
+            <div class="rating-css">
+              <div class="star-icon">
+                <!-- <label
+                  *ngIf="libro.puntuacion > 0"
+                  class="fa fa-star"
+                ></label>
+                <label
+                  *ngIf="libro.puntuacion > 1"
+                  class="fa fa-star"
+                ></label>
+                <label
+                  *ngIf="libro.puntuacion > 2"
+                  class="fa fa-star"
+                ></label>
+                <label
+                  *ngIf="libro.puntuacion > 3"
+                  class="fa fa-star"
+                ></label>
+                <label
+                  *ngIf="libro.puntuacion > 4"
+                  class="fa fa-star"
+                ></label> -->
+              </div>
+            </div>
+          </td>
+          <!-- <td>{{libro.stockDisponible}}</td> -->
+          <td class="col-2 text-center">
+            <button
+              (click)="agregarLibro(10)"
+              class="btn btn-primary btn-sm ms-1"
+            >
+              Detalle
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  
+  <!-- <div class="mt-5">
+    <div class="d-flex justify-content-between align-items-center">
       <h2>Nuevo libro</h2>
       <button
         routerLink="/lista-libro"
@@ -134,5 +203,5 @@
         </button>
       </div>
     </form>
-  </div>
+  </div> -->
 </div>

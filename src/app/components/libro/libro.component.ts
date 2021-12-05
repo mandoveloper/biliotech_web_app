@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { LibroService } from '../../services/libro.service';
 import { ActivatedRoute } from '@angular/router';
 import { Libro } from 'src/app/models/libro.models';
-import { Rating } from '../../models/libro.models';
 
 @Component({
   selector: 'app-libro',
@@ -18,7 +17,7 @@ export class LibroComponent implements OnInit {
     language: "",
     edition: "",
     pages: 0,
-    coverLink: "../assets/img/noimage.jpg",
+    coverLink: "",
     synopsys: "",
     stockDisponible: 0,
     puntuacion: 0,
@@ -27,6 +26,9 @@ export class LibroComponent implements OnInit {
   };
 
   constructor( private libroService: LibroService, private activatedRoute: ActivatedRoute) { }
+
+  isLoading: boolean = true;
+
 
   ngOnInit(): void {
     this.getLibroDetalle();
@@ -41,7 +43,9 @@ export class LibroComponent implements OnInit {
     this.libroService.detalleLibroId(id).subscribe( resp => {
       console.log(resp);
       this.libro = resp;
-      // this.router.navigateByUrl(`/libro/${id}`)
+      if (this.libro) {
+        this.isLoading = false;
+      }
     })
   }
 

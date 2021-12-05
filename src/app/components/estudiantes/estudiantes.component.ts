@@ -13,6 +13,8 @@ export class EstudiantesComponent implements OnInit {
 
   estudiantes: Estudiante[] = [];
   estudiante: EstudianteDetalle;
+  isLoading: boolean = true;
+
 
   constructor(private estudiantesService: EstudianteService, private router: Router) { }
 
@@ -23,12 +25,18 @@ export class EstudiantesComponent implements OnInit {
   getEstudiantes() {
     this.estudiantesService.getEstudiantes().subscribe( (resp) => {
       this.estudiantes = resp;
+      if (this.estudiantes) {
+        this.isLoading = false;
+      }
     });
   }
 
   getEstudianteById(id: number) {
     this.estudiantesService.getEstudianteById(id).subscribe( (resp) => {
       this.estudiante = resp;
+      if (this.estudiante) {
+        this.isLoading = false;
+      }
       this.router.navigateByUrl(`/estudiante/${id}`)
     });
   }
