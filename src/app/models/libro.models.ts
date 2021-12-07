@@ -18,3 +18,12 @@ export interface Rating {
   fechaComentario: string;
   comentario: string;
 }
+
+export interface RequestLibroBilbioteca {
+  idLibro: number;
+  cantidad: number;
+  title: string;
+  edicion: string;
+  coverLink: string;
+  email: string;
+}

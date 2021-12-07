@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
+import { RequestLibroBilbioteca } from '../../models/libro.models';
+import { LibroService } from '../../services/libro.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-libro-crear',
@@ -7,46 +10,66 @@ import Swal from 'sweetalert2';
   styleUrls: ['./libro-crear.component.css'],
 })
 export class LibroCrearComponent implements OnInit {
-  constructor() {}
+  constructor( private libroService: LibroService, private router: Router ) {}
 
-  ngOnInit(): void {}
+  librosGeneral: RequestLibroBilbioteca[] = [];
 
-  async agregarLibro(id: number) {
+  ngOnInit(): void {
+    this.listarLibrosGeneral();
+  }
+
+  listarLibrosGeneral() {
+    this.libroService.listarLibrosGeneral().subscribe( resp => {
+      console.log(resp);
+      this.librosGeneral = resp;
+    });
+  }
+
+  async agregarLibro(objLibro: RequestLibroBilbioteca) {
     // console.log('id desde agregar libro a bliblioteca', id);
+    console.log(objLibro);
 
     Swal.fire({
-      title: 'Ingresar la cantidad a requerir',
+      title: 'Ingresar la cantidad',
       input: 'number',
-      inputAttributes: {
-        autocapitalize: 'off',
-      },
       showCancelButton: true,
       confirmButtonText: 'Guardar',
       confirmButtonColor: '#0275d8',
       cancelButtonText: 'Cancelar',
       cancelButtonColor: '#d9534f',
       showLoaderOnConfirm: true,
-      preConfirm: (login) => {
-        // agregar endpoint de guardado
-        return fetch(``)
-          .then((response) => {
-            if (!response.ok) {
-              throw new Error(response.statusText);
-            }
-            return response.json();
+      preConfirm: (cant) => {
+
+        if(cant == 0) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Debe ingresar minimo 1',
           })
-          .catch((error) => {
-            Swal.showValidationMessage(`Fallo al guardar: ${error}`);
-          });
+          return
+        }
+
+
+        console.log('respuesta desde sw',cant);
+        let body = {
+          idLibro: objLibro.idLibro,
+          cantidad: cant,
+          email: this.libroService.userEmail
+        }
+        this.libroService.registrarLibro(body).subscribe( resp => {
+          console.log('Respuesta de guardado', resp);
+        });
       },
       allowOutsideClick: () => !Swal.isLoading(),
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire({
           title: `Libro agregado con éxito`,
-          // imageUrl: result.value.avatar_url,
+          confirmButtonColor: '#0275d8',
         });
+        this.router.navigateByUrl('/libros');
       }
     });
   }
+  
 }

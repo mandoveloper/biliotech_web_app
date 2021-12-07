@@ -2,11 +2,34 @@
   <div class="mt-5">
     <h2>Listado de Estudiantes</h2>
     <hr />
-    <div class="form-row d-flex justify-content-end">
+
+    <div class="row my-4 d-flex justify-content-between">
+      <div class="col">
+        <input
+          name="estudiantesFilters"
+          [(ngModel)]="estudiantesFilters"
+          class="form-control"
+          type="text"
+          placeholder="Nombre de estudiante"
+        />
+        
+      </div>
+      <div class="col">
+        <div class="row">
+          <div class="col d-flex justify-content-end">
+            <button routerLink="/estudiante-crear" class="btn btn-primary">
+              <i class="fa fa-plus"> Agregar estudiante</i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="form-row d-flex justify-content-end">
       <button routerLink="/estudiante-crear" class="btn btn-primary">
         <i class="fa fa-plus"> Agregar estudiante</i>
       </button>
-    </div>
+    </div> -->
     <table class="table mt-3 table-striped">
       <thead class="thead-dark">
         <tr>
@@ -18,8 +41,13 @@
           <th scope="col"></th>
         </tr>
       </thead>
-      <tbody>
-        <tr *ngFor="let estudiante of estudiantes; let i = index">
+      <tbody class="animate__animated animate__fadeIn animate__delay-1s">
+        <tr
+          *ngFor="
+            let estudiante of estudiantes | filter: estudiantesFilters;
+            let i = index
+          "
+        >
           <th scope="row">{{ i + 1 }}</th>
           <td>{{ estudiante.nombres }}</td>
           <td>{{ estudiante.apellidoPaterno }}</td>
@@ -37,7 +65,11 @@
       </tbody>
     </table>
     <div *ngIf="isLoading" class="d-flex justify-content-center mt-5">
-      <div class="spinner-border text-primary text-center" style="width: 5rem; height: 5rem;" role="status">
+      <div
+        class="spinner-border text-primary text-center"
+        style="width: 5rem; height: 5rem"
+        role="status"
+      >
         <span class="sr-only">Cargando datos...</span>
       </div>
     </div>

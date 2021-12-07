@@ -19,6 +19,8 @@ import { LibroCrearComponent } from './components/libro-crear/libro-crear.compon
 import { LibroEditarComponent } from './components/libro-editar/libro-editar.component';
 import { MyChartComponent } from './components/my-chart/my-chart.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { FilterPipe } from './pipes/filter.pipe';
+import { FilterBooksPipe } from './pipes/filter-books.pipe';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     LibroCrearComponent,
     LibroEditarComponent,
     MyChartComponent,
-    DashboardComponent
+    DashboardComponent,
+    FilterPipe,
+    FilterBooksPipe
   ],
   imports: [
     BrowserModule,

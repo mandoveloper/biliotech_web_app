@@ -4,6 +4,8 @@ import { EstudianteDetalle } from 'src/app/models/estudiante.models';
 import { EstudianteService } from '../../services/estudiante.service';
 import { Estudiante } from '../../models/estudiante.models';
 
+import 'animate.css';
+
 @Component({
   selector: 'app-estudiantes',
   templateUrl: './estudiantes.component.html',
@@ -13,6 +15,8 @@ export class EstudiantesComponent implements OnInit {
 
   estudiantes: Estudiante[] = [];
   estudiante: EstudianteDetalle;
+  estudiantesFilters = [];
+
   isLoading: boolean = true;
 
 

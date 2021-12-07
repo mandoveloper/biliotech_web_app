@@ -1,9 +1,9 @@
 <div class="container">
   <div class="mt-5">
     <div class="d-flex justify-content-between align-items-center">
-      <h2>Agregar a  biblioteca</h2>
+      <h2>Agregar a biblioteca</h2>
       <button
-        routerLink="/lista-libro"
+        routerLink="/libros"
         class="btn btn-danger btn-sm"
         style="height: 32px; width: 32px"
       >
@@ -16,192 +16,26 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">Titulo</th>
-          <th scope="col">Categoría</th>
-          <th scope="col">Puntuacion</th>
-          <th scope="col">Stock</th>
+          <th class="text-center" scope="col">Edición</th>
+          <th class="text-center" scope="col">Libro</th>
+          <!-- <th class="text-center" scope="col">Cantidad</th> -->
           <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let libro of [1,1,1,1,1,1]; let i = index">
-          <th scope="row">{{i + 1}}</th>
-          <!-- <td>{{libro.title}}</td>
-          <td>{{libro.categorias}}</td> -->
-          <td>
-            <div class="rating-css">
-              <div class="star-icon">
-                <!-- <label
-                  *ngIf="libro.puntuacion > 0"
-                  class="fa fa-star"
-                ></label>
-                <label
-                  *ngIf="libro.puntuacion > 1"
-                  class="fa fa-star"
-                ></label>
-                <label
-                  *ngIf="libro.puntuacion > 2"
-                  class="fa fa-star"
-                ></label>
-                <label
-                  *ngIf="libro.puntuacion > 3"
-                  class="fa fa-star"
-                ></label>
-                <label
-                  *ngIf="libro.puntuacion > 4"
-                  class="fa fa-star"
-                ></label> -->
-              </div>
-            </div>
-          </td>
-          <!-- <td>{{libro.stockDisponible}}</td> -->
+        <tr *ngFor="let libro of librosGeneral; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ libro.title }}</td>
+          <td class="text-center">{{ libro.edicion }}</td>
+          <td class="text-center">
+            <img style="height: 42px;" [src]= libro.coverLink alt="">
+            </td>
+          <!-- <td class="text-center">{{ libro.cantidad }}</td> -->
           <td class="col-2 text-center">
-            <button
-              (click)="agregarLibro(10)"
-              class="btn btn-primary btn-sm ms-1"
-            >
-              Detalle
-            </button>
+            <button (click)="agregarLibro(libro)" class="btn btn-primary btn-sm ms-1"><i class="fa fa-plus"></i> Agregar</button>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
-
-  
-  <!-- <div class="mt-5">
-    <div class="d-flex justify-content-between align-items-center">
-      <h2>Nuevo libro</h2>
-      <button
-        routerLink="/lista-libro"
-        class="btn btn-danger btn-sm"
-        style="height: 32px; width: 32px"
-      >
-        <i class="fa fa-times"></i>
-      </button>
-    </div>
-    <hr />
-
-    <form action="">
-      <div class="row">
-        <div class="col-7">
-          <div class="form-group">
-            <label>Nombre de libro</label>
-            <input type="text" class="form-control" placeholder="" />
-            <div style="height: 24px">
-              <small *ngIf="false" class="text-danger"
-                >* Campo obligatorio</small
-              >
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="form-group col-5">
-              <label>Categoría</label>
-              <select id="inputState" class="form-control">
-                <option selected>Seleccionar categoría...</option>
-                <option>...</option>
-              </select>
-              <div style="height: 24px">
-                <small *ngIf="false" class="text-danger"
-                  >* Campo obligatorio</small
-                >
-              </div>
-            </div>
-
-            <div class="form-group col">
-              <label>Páginas</label>
-              <input type="number" class="form-control" />
-            </div>
-
-            <div class="form-group col">
-              <label>Stock</label>
-              <input type="number" class="form-control" />
-            </div>
-
-            <div class="form-group col-3">
-              <label>Cod Barras</label>
-              <input type="text" class="form-control" />
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="">Autor</label>
-            <input type="text" class="form-control" />
-            <div style="height: 24px">
-              <small *ngIf="false" class="text-danger"
-                >* Campo obligatorio</small
-              >
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="form-group col-5">
-              <label>País</label>
-              <select id="inputState" class="form-control">
-                <option selected>Seleccionar país...</option>
-                <option>...</option>
-              </select>
-              <div style="height: 24px">
-                <small *ngIf="false" class="text-danger"
-                  >* Campo obligatorio</small
-                >
-              </div>
-            </div>
-
-            <div class="form-group col">
-              <label>Campo libre</label>
-              <input type="text" class="form-control" />
-              <div style="height: 24px">
-                <small *ngIf="false" class="text-danger"
-                  >* Campo obligatorio</small
-                >
-              </div>
-            </div>
-
-            <div class="form-group col">
-              <label>Valor S/.</label>
-              <input type="text" class="form-control" />
-              <div style="height: 24px">
-                <small *ngIf="false" class="text-danger"
-                  >* Campo obligatorio</small
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-5">
-          <div class="row">
-            <div class="col d-flex justify-content-center">
-              <div class="container__image-portada">
-                <img src="" alt="" />
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col text-center mt-3">
-              <button class="btn btn-primary">Cargar portada</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="">Reseña</label>
-        <textarea
-          type="text"
-          rows="3"
-          style="resize: none"
-          au
-          class="form-control"
-        >
-        </textarea>
-      </div>
-      <div class="text-center mt-3 mb-4">
-        <button type="submit" class="btn btn-primary w-25">
-          <i class="fa fa-save"></i> Guardar
-        </button>
-      </div>
-    </form>
-  </div> -->
 </div>

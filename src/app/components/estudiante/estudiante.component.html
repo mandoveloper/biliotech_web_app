@@ -83,10 +83,10 @@
                   <!-- fin de loading -->
 
                   <!-- inicio de no data -->
-                  <div *ngIf="loadingBooks" class="d-flex justify-content-center mt-5">
+                  <div *ngIf="loadingBooks" class="d-flex justify-content-center mt-5 animate__animated animate__fadeIn animate__delay-0.5s">
                     <i class="fa fa-book fa-4x"></i>
                   </div>
-                  <div *ngIf="loadingBooks" class="mt-4">
+                  <div *ngIf="loadingBooks" class="mt-4 animate__animated animate__fadeIn animate__delay-0.5s">
                     <h2 class="text-center">No hay libros asignados</h2>
                   </div>
                   <!-- fin de no data -->
@@ -96,7 +96,7 @@
                     style="max-width: 90%"
                     *ngFor="let libro of libros"
                   >
-                    <div class="row no-gutters">
+                    <div class="row no-gutters animate__animated animate__fadeIn animate__delay-0.5s">
                       <div class="col-md-4" >
                         <img 
                           src="{{ libro.coverLink }}"
