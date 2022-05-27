@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 import Swal from 'sweetalert2';
-import * as shajs from 'sha.js';
 
 @Component({
   selector: 'app-login',
@@ -27,10 +26,6 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    var sha256stream = shajs('sha256')
-    sha256stream.end('42')
-    console.log(sha256stream.read().toString('hex'))
-
     if (!this.forma.invalid) {
       const { email, password } = this.forma.value;
 
@@ -52,8 +47,6 @@ export class LoginComponent implements OnInit {
   }
 
   crearFormulario() {
-    console.log(shajs('sha256').update('42').digest('hex'))
-
     this.forma = this.fb.group({
       email: ['i202014475@cibertec.edu.pe', Validators.required],
       password: ['1234', Validators.required],
